@@ -34,3 +34,620 @@
   .kpi-value{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800}
   .kpi-sub{font-size:.78rem;color:var(--muted);margin-top:.3rem}
   .table-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}
+  .search-box{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:8px 14px;width:280px}
+  .search-box input{background:none;border:none;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.88rem;outline:none;width:100%}
+  .search-box input::placeholder{color:var(--muted)}
+  .btn{background:linear-gradient(135deg,var(--accent),var(--accent2));border:none;color:white;font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:600;padding:8px 18px;border-radius:8px;cursor:pointer;transition:opacity .2s;display:flex;align-items:center;gap:6px}
+  .btn:hover{opacity:.88}
+  .btn.secondary{background:var(--card);color:var(--text);border:1px solid var(--border)}
+  .table-wrap{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+  table{width:100%;border-collapse:collapse}
+  th{background:var(--surface);text-align:left;padding:10px 14px;font-size:.75rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid var(--border);font-family:'DM Mono',monospace}
+  td{padding:10px 14px;font-size:.84rem;border-bottom:1px solid rgba(42,42,61,.5)}
+  tr:last-child td{border-bottom:none}
+  tr:hover td{background:rgba(79,110,247,.04)}
+  .code-cell{font-family:'DM Mono',monospace;color:var(--accent);font-size:.82rem}
+  .sb{display:inline-block;padding:2px 10px;border-radius:20px;font-size:.75rem;font-weight:500}
+  .s-inuse{background:rgba(16,185,129,.15);color:#34d399;border:1px solid rgba(16,185,129,.25)}
+  .s-damaged{background:rgba(239,68,68,.15);color:#f87171;border:1px solid rgba(239,68,68,.25)}
+  .s-unused{background:rgba(245,158,11,.15);color:#fbbf24;border:1px solid rgba(245,158,11,.25)}
+  .s-val{background:rgba(79,110,247,.15);color:#818cf8;border:1px solid rgba(79,110,247,.25)}
+  .action-btn{background:var(--surface);border:1px solid var(--border);color:var(--text);font-size:.78rem;padding:4px 10px;border-radius:6px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
+  .action-btn:hover{border-color:var(--accent);color:var(--accent)}
+  .pagination{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-top:1px solid var(--border);font-size:.82rem;color:var(--muted)}
+  .page-btns{display:flex;gap:4px}
+  .page-btn{background:var(--surface);border:1px solid var(--border);color:var(--text);width:30px;height:30px;border-radius:6px;cursor:pointer;font-size:.82rem;display:flex;align-items:center;justify-content:center;transition:all .2s}
+  .page-btn:hover,.page-btn.active{border-color:var(--accent);color:var(--accent)}
+  .generator-layout{display:grid;grid-template-columns:380px 1fr;gap:2rem;align-items:start}
+  .gen-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.5rem}
+  .gen-card h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:1.2rem}
+  .form-group{margin-bottom:1rem}
+  label{display:block;font-size:.78rem;color:var(--muted);margin-bottom:5px;font-weight:500;text-transform:uppercase;letter-spacing:.05em}
+  input[type=text],select{width:100%;background:var(--surface);border:1px solid var(--border);color:var(--text);font-family:'DM Sans',sans-serif;font-size:.88rem;padding:9px 12px;border-radius:8px;outline:none;transition:border-color .2s}
+  input[type=text]:focus,select:focus{border-color:var(--accent)}
+  select option{background:var(--surface)}
+  .qr-preview-panel{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:2rem;display:flex;flex-direction:column;align-items:center;min-height:500px}
+  .qr-tag-wrap{background:white;border-radius:12px;padding:24px 20px 16px;width:260px;box-shadow:0 8px 40px rgba(0,0,0,.5);display:flex;flex-direction:column;align-items:center}
+  .qr-tag-header{font-family:'Syne',sans-serif;font-weight:800;font-size:.85rem;color:#1a1a2e;text-align:center;margin-bottom:8px;letter-spacing:.03em}
+  .qr-tag-sub{font-size:.68rem;color:#6b7280;text-align:center;margin-bottom:14px}
+  .qr-divider{width:100%;height:1px;background:#e5e7eb;margin-bottom:14px}
+  #qr-output{display:flex;justify-content:center}
+  #qr-output canvas,#qr-output img{border-radius:4px}
+  .qr-code-text{font-family:'DM Mono',monospace;font-size:.8rem;color:#374151;margin-top:10px;font-weight:600;letter-spacing:.08em;text-align:center}
+  .qr-desc-text{font-size:.7rem;color:#6b7280;margin-top:4px;text-align:center}
+  .qr-footer{margin-top:12px;padding-top:10px;border-top:1px dashed #e5e7eb;width:100%;font-size:.62rem;color:#9ca3af;text-align:center}
+  .qr-footer-brand{font-weight:700;color:#374151}
+  .preview-actions{margin-top:1.5rem;display:flex;gap:10px}
+  .val-grid{display:grid;grid-template-columns:1fr 340px;gap:1.5rem}
+  .scan-simulator{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.5rem;position:sticky;top:80px}
+  .scan-simulator h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:1rem}
+  .scan-input{width:100%;background:var(--surface);border:2px solid var(--accent);color:var(--text);font-family:'DM Mono',monospace;font-size:1rem;padding:12px;border-radius:8px;outline:none;text-align:center;letter-spacing:.1em;margin-bottom:10px}
+  .scan-result{margin-top:12px;padding:14px;border-radius:10px;display:none}
+  .scan-result.found{background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.3)}
+  .scan-result.notfound{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3)}
+  .scan-result-title{font-weight:700;margin-bottom:8px}
+  .scan-result.found .scan-result-title{color:#34d399}
+  .scan-result.notfound .scan-result-title{color:#f87171}
+  .scan-detail{font-size:.82rem;color:var(--muted);margin-bottom:3px}
+  .scan-detail span{color:var(--text)}
+  .log-table-wrap{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+  .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(4px);z-index:200;align-items:center;justify-content:center}
+  .modal-overlay.open{display:flex}
+  .modal{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;width:500px;max-width:90vw;position:relative}
+  .modal h3{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:800;margin-bottom:1.4rem}
+  .modal-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:1.5rem}
+  .close-btn{position:absolute;top:1rem;right:1rem;background:none;border:none;color:var(--muted);cursor:pointer;font-size:1.2rem}
+  .filter-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:1rem}
+  .filter-select{background:var(--card);border:1px solid var(--border);color:var(--text);font-family:'DM Sans',sans-serif;font-size:.82rem;padding:6px 10px;border-radius:7px;outline:none}
+  .row-count{font-size:.8rem;color:var(--muted);margin-left:auto}
+  .empty-state{text-align:center;padding:3rem;color:var(--muted)}
+  .toast{position:fixed;bottom:24px;right:24px;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 20px;font-size:.88rem;box-shadow:0 8px 24px rgba(0,0,0,.4);transform:translateY(100px);opacity:0;transition:all .3s;z-index:500}
+  .toast.show{transform:translateY(0);opacity:1}
+  .toast.success{border-left:3px solid var(--green)}
+  .toast.error{border-left:3px solid var(--red)}
+  .sync-note{background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);border-radius:8px;padding:8px 14px;font-size:.8rem;color:#34d399;margin-bottom:1.5rem}
+  @media(max-width:900px){.kpi-grid{grid-template-columns:repeat(2,1fr)}.generator-layout,.val-grid{grid-template-columns:1fr}.header-stats{display:none}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">
+    <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M3 3h6v6H3zm2 2v2h2V5zm8-2h6v6h-6zm2 2v2h2V5zM3 13h6v6H3zm2 2v2h2v-2zm13-2h2v2h-2zm-4 0h2v2h-2zm4 4h2v2h-2zm-4 0h2v2h-2zm-2 2h2v2h-2zm4 0h2v2h-2z"/></svg></div>
+    <div class="logo-text">QR<span>Track</span> Admin</div>
+  </div>
+  <nav>
+    <button class="active" onclick="showTab('dashboard',this)">Dashboard</button>
+    <button onclick="showTab('inventory',this)">Inventory</button>
+    <button onclick="showTab('generator',this)">QR Generator</button>
+    <button onclick="showTab('validation',this)">Validation Log</button>
+  </nav>
+  <div class="header-stats">
+    <div class="stat-pill"><div class="dot" style="background:var(--green)"></div><span id="h-total">—</span> Assets</div>
+    <div class="stat-pill"><div class="dot" style="background:var(--accent)"></div><span id="h-validated">0</span> Validated</div>
+  </div>
+</header>
+
+<div id="tab-dashboard" class="tab-panel active">
+  <div class="dashboard">
+    <div class="page-title">Inventory Dashboard</div>
+    <div class="page-sub">Syncs automatically with the QR Scanner app via shared browser storage (localStorage)</div>
+    <div class="sync-note" id="sync-note" style="display:none">🔄 Scanner app data synced — validation records updated from QR Scanner.</div>
+    <div class="kpi-grid">
+      <div class="kpi-card" style="--ac:var(--accent)"><div class="kpi-label">Total Assets</div><div class="kpi-value" id="kpi-total">—</div><div class="kpi-sub">All registered</div></div>
+      <div class="kpi-card" style="--ac:var(--green)"><div class="kpi-label">In-Use</div><div class="kpi-value" id="kpi-inuse">—</div><div class="kpi-sub">Deployed</div></div>
+      <div class="kpi-card" style="--ac:#7c3aed"><div class="kpi-label">QR Validated</div><div class="kpi-value" id="kpi-validated">—</div><div class="kpi-sub">Inventory checked</div></div>
+      <div class="kpi-card" style="--ac:var(--amber)"><div class="kpi-label">Pending Check</div><div class="kpi-value" id="kpi-pending">—</div><div class="kpi-sub">Not yet scanned</div></div>
+    </div>
+    <div class="table-header">
+      <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:1rem">Recent Scan Activity</div>
+      <button class="btn secondary" onclick="showTab('validation',document.querySelectorAll('nav button')[3])">View All</button>
+    </div>
+    <div class="table-wrap" id="recent-log"><div class="empty-state">No scans yet.</div></div>
+  </div>
+</div>
+
+<div id="tab-inventory" class="tab-panel">
+  <div class="dashboard">
+    <div class="page-title">Asset Inventory</div>
+    <div class="page-sub">All registered property assets — QR Status updates in real-time from scanner</div>
+    <div class="table-header">
+      <div class="search-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;color:var(--muted);flex-shrink:0"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" id="inv-search" placeholder="Search code, description…" oninput="renderInventory()">
+      </div>
+      <div style="display:flex;gap:8px">
+        <button class="btn secondary" onclick="exportCSV()">↓ Export CSV</button>
+        <button class="btn" onclick="openAddModal()">+ Add Asset</button>
+      </div>
+    </div>
+    <div class="filter-row">
+      <select class="filter-select" id="f-status" onchange="renderInventory()">
+        <option value="">All Status</option><option>In-use</option><option>Damaged</option><option>Unused</option>
+      </select>
+      <select class="filter-select" id="f-account" onchange="renderInventory()"><option value="">All Accounts</option></select>
+      <div class="row-count" id="row-count"></div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr>
+          <th><input type="checkbox" id="chk-all" onchange="toggleAll(this)"></th>
+          <th>Property Code</th><th>Description</th><th>Date Acquired</th><th>Amount</th>
+          <th>Account</th><th>In-Charge / Dept</th><th>Status</th><th>QR Status</th><th>Actions</th>
+        </tr></thead>
+        <tbody id="inv-tbody"></tbody>
+      </table>
+      <div class="pagination"><span id="page-info"></span><div class="page-btns" id="page-btns"></div></div>
+    </div>
+  </div>
+</div>
+
+<div id="tab-generator" class="tab-panel">
+  <div class="dashboard">
+    <div class="page-title">QR Code Generator</div>
+    <div class="page-sub">Generate printable property tag QR codes — scan format: CODE|DESC|DEPT</div>
+    <div class="generator-layout">
+      <div>
+        <div class="gen-card">
+          <h3>Select Asset</h3>
+          <div class="form-group"><label>Property Code</label><input type="text" id="gen-code" placeholder="Type to search…" oninput="autoFillGen(this.value)"></div>
+          <div id="gen-suggestions" style="margin-bottom:10px;display:flex;flex-wrap:wrap;gap:6px"></div>
+          <div class="form-group"><label>Description</label><input type="text" id="gen-desc" placeholder="Asset description"></div>
+          <div class="form-group"><label>In-Charge / Dept</label><input type="text" id="gen-dept" placeholder="Name or department"></div>
+          <div class="form-group"><label>Account Name</label><input type="text" id="gen-account" placeholder="Account category"></div>
+          <div class="form-group"><label>Status</label><select id="gen-status"><option>In-use</option><option>Unused</option><option>Damaged</option></select></div>
+          <div class="form-group"><label>Organization Name</label><input type="text" id="gen-org" value="PROPERTY OF"></div>
+          <div class="form-group"><label>Sub-label</label><input type="text" id="gen-sublabel" value="Asset Management Division"></div>
+          <button class="btn" style="width:100%;justify-content:center" onclick="generateQR()">Generate QR Tag</button>
+        </div>
+      </div>
+      <div class="qr-preview-panel">
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;margin-bottom:1.5rem;align-self:flex-start">Tag Preview</div>
+        <div class="qr-tag-wrap" id="qr-tag-element">
+          <div class="qr-tag-header" id="tag-org">PROPERTY OF</div>
+          <div class="qr-tag-sub" id="tag-sublabel">Asset Management Division</div>
+          <div class="qr-divider"></div>
+          <div id="qr-output"><div style="width:180px;height:180px;background:#f3f4f6;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#9ca3af;font-size:.8rem">QR appears here</div></div>
+          <div class="qr-code-text" id="tag-code">—</div>
+          <div class="qr-desc-text" id="tag-desc">—</div>
+          <div class="qr-footer"><div class="qr-footer-brand" id="tag-dept-footer">—</div><div>Scan to verify · Property Tag</div></div>
+        </div>
+        <div class="preview-actions">
+          <button class="btn secondary" onclick="printTag()">🖨 Print Tag</button>
+        </div>
+        <div style="margin-top:1rem;font-size:.78rem;color:var(--muted);text-align:center">QR encodes: <code style="color:var(--accent)">CODE|Description|Dept</code> — plain text, readable by any QR scanner</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="tab-validation" class="tab-panel">
+  <div class="dashboard">
+    <div class="page-title">Validation Log</div>
+    <div class="page-sub">All QR scan events from both Admin and mobile Scanner app</div>
+    <div class="val-grid">
+      <div>
+        <div class="table-header">
+          <div style="font-family:'Syne',sans-serif;font-weight:700">Scan History (<span id="log-count">0</span>)</div>
+          <button class="btn secondary" onclick="clearLog()">Clear Log</button>
+        </div>
+        <div class="log-table-wrap">
+          <table>
+            <thead><tr><th>#</th><th>Timestamp</th><th>Property Code</th><th>Description</th><th>Scanned By</th><th>Result</th></tr></thead>
+            <tbody id="log-tbody"><tr><td colspan="6" class="empty-state">No scan events yet.</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+      <div>
+        <div class="scan-simulator">
+          <h3>🔍 Manual Lookup</h3>
+          <p style="font-size:.82rem;color:var(--muted);margin-bottom:12px">Enter a property code to validate against the database.</p>
+          <input type="text" class="scan-input" id="manual-code" placeholder="e.g. 1-A4"
+            onkeydown="if(event.key==='Enter')manualScan()"
+            oninput="this.value=this.value.toUpperCase()">
+          <button class="btn" style="width:100%;justify-content:center" onclick="manualScan()">Validate</button>
+          <div id="scan-result-box" class="scan-result"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="add-modal">
+  <div class="modal">
+    <button class="close-btn" onclick="closeAddModal()">✕</button>
+    <h3>Add New Asset</h3>
+    <div class="form-group"><label>Property Code</label><input type="text" id="new-code" placeholder="e.g. 1-A100"></div>
+    <div class="form-group"><label>Description</label><input type="text" id="new-desc"></div>
+    <div class="form-group"><label>In-Charge / Dept</label><input type="text" id="new-dept"></div>
+    <div class="form-group"><label>Account Name</label><input type="text" id="new-account"></div>
+    <div class="form-group"><label>Date Acquired</label><input type="text" id="new-date" placeholder="YYYY-MM-DD"></div>
+    <div class="form-group"><label>Amount</label><input type="text" id="new-amount" placeholder="0.00"></div>
+    <div class="form-group"><label>Status</label><select id="new-status"><option>In-use</option><option>Unused</option><option>Damaged</option></select></div>
+    <div class="modal-actions">
+      <button class="btn secondary" onclick="closeAddModal()">Cancel</button>
+      <button class="btn" onclick="addAsset()">Add Asset</button>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const LS_ASSETS='qrtrack_assets', LS_LOG='qrtrack_log';
+const SEED=[
+  ["1-A4","1996-08-30","Office Table",66157.71,"In-use","FFE","LA Retuya"],
+  ["1-A6","1991-03-20","Manager's Table",8000,"In-Use","FFE","M Sisor"],
+  ["1-A25","2006-06-30","Teller Counter",231022.80,"In-use","FFE","CJ Catipay"],
+  ["1-A46","2008-11-18","Computer Table",23556.70,"In-use","FFE","R Juarez/ MJ Alga"],
+  ["1-A47","2009-03-31","Executive Table",5460,"In-use","FFE","M Brasileño"],
+  ["1-A48","2009-03-31","Executive Table",7000,"In-use","FFE","F Ates"],
+  ["1-A50","2009-09-08","Office Table",7344.97,"In-use","FFE","Acctg Dept"],
+  ["1-A51","2009-09-08","Office Table",7344.97,"In-use","FFE","M Brasileño"],
+  ["1-A52","2009-09-08","Office Table",7344.97,"In-use","FFE","F Quirante"],
+  ["1-A53","2009-09-08","Office Table",7344.96,"In-use","FFE","HR Dept"],
+  ["1-A54","2009-09-08","Office Table",7377.96,"In-use","FFE","Y Lumagsao"],
+  ["1-A58","2010-11-17","Office Table",6422.59,"In-use","FFE","M Cardiño"],
+  ["1-A59","2010-11-17","Office Table",6422.59,"In-use","FFE","V Palad"],
+  ["1-A60","2010-11-17","Office Table",6422.58,"In-use","FFE","IG Capundag"],
+  ["1-A67","2011-04-01","Office Table",5927.50,"In-use","FFE","RF Elba"],
+  ["1-A68","2011-04-01","Office Table",5927.50,"In-use","FFE","Prayer Table"],
+  ["1-A73","2011-06-22","Office Table",7108.17,"In-use","FFE","Y Lumagsao"],
+  ["1-A76","2011-12-29","Counter Table",10779,"In-use","FFE","EJ Gimena"],
+  ["1-A77","2011-12-29","Counter Table",70779,"In-use","FFE","I Cereño"],
+  ["1-A80","2008-11-18","Computer Table",23556.70,"In-use","FFE","LA Retuya / F Ates"],
+  ["17-Q98","2024-10-25","APC UPS 650 VA",2661.62,"In-use","FFE-IT","IT-E. Gimena"],
+  ["17-Q99","2024-10-25","APC UPS 650 VA",2661.62,"In-use","FFE-IT","Acctg-R. Elba"],
+  ["17-Q100","2024-10-25","APC-UPS 1000VA",5736.36,"In-use","FFE-IT","IT-E. Gimena"],
+  ["20-T109","2024-10-25","Seagate 2TB External HD - CCTV",4706.06,"In-use","FFE-IT","IT-E. Gimena"],
+  ["20-T110","2024-10-25","Seagate 2TB External HD - AMG",4706.06,"In-use","FFE-IT","IT-E. Gimena"],
+  ["6-F4","2007-08-07","Olympia Typewriter",8998,"Damaged","FFE-Other","HO Acctg"],
+  ["6-F8","2011-02-18","Olympia typewriter",6000,"In-use","FFE-Other","HO Acctg"],
+  ["8-H4","2024-01-04","Everest Water Dispenser",5404.04,"In-use","FFE-Other","HO Board room"],
+  ["9-I6","2021-10-07","OPPO A16 64GB Mobile Phone",8564.64,"In-use","FFE-IT","HO - F Ates"],
+  ["9-I7","2021-10-07","OPPO A16 64GB Mobile Phone",8564.65,"In-use","FFE-IT","HO - EJ Gimena"],
+  ["9-I8","2021-10-07","OPPO A16 64GB Mobile Phone",8564.65,"In-use","FFE-IT","HO - MK Sagan"],
+  ["9-I9","2021-10-07","OPPO A16 64GB Mobile Phone",8564.65,"In-use","FFE-IT","Ipil - DR Baid"],
+  ["9-I10","2021-10-07","OPPO A16 64GB Mobile Phone",8564.65,"In-use","FFE-IT","Piñan - R Pa-a"],
+  ["11-K16","2018-04-26","Carrier Window Type Aircon",33271,"In-use","FFE-Other","Ipil - AR Rumandan"],
+  ["11-K17","2018-08-13","Carrier Window Type Aircon",16558.59,"In-use","FFE-Other","HO Comp - E Bagaub"],
+  ["11-K21","2020-09-08","Condura Window Type Aircon",40983.61,"In-use","FFE-Other","HO Acctg - RF Elba"],
+  ["11-K31","2022-03-03","Carrier Window Type Aircon",36326.40,"In-use","FFE-Other","HO Reg - J Catipay"],
+  ["11-K32","2023-08-30","Carrier Window Type Aircon",27676.77,"In-use","FFE-Other","HO MF - KM Pasoc"],
+  ["11-K33","2024-05-31","Carrier Window Type Aircon",26900,"In-use","FFE-Other","HO HR - IG Capundag"],
+  ["12-L11","2024-03-12","Fire Extinguisher",3200,"Unused","FFE-Other","HO"],
+  ["14-N4","2022-04-27","Glass Divider & Door",35800,"In-use","FFE-Other","HO"],
+  ["15-O92","2022-04-22","Computer Set",17661.62,"In-use","FFE-IT","Ipil"],
+  ["16-P1","2016-09-19","Gestetner Xerox Machine",59130.26,"In-use","FFE-Other","HO Reg"],
+  ["16-P2","2021-03-02","Canon 3in1 printer",8767.15,"In-use","FFE-Other","Acctg-J.Alga"],
+  ["16-P50","2022-06-27","EPSON L130 Printer",9080.81,"In-use","FFE-IT","Acctg-R.Juarez"],
+  ["16-P61","2013-07-08","CITIC Passbook Printer",51153.69,"In-use","FFE-IT","Teller-J.Catipay"],
+  ["16-P62","2019-11-18","Olivetti Passbook Printer",45056.07,"In-use","FFE-IT","Ipil-D. Baid"],
+  ["16-P63","2023-09-07","EPSON L121 Printer",7065.66,"In-use","FFE-IT","HR-I.Capundag"],
+  ["16-P64","2023-09-07","EPSON L121 Printer",7065.66,"In-use","FFE-IT","Reg-A.Retuya"],
+  ["16-P65","2023-09-29","EPSON L121 Printer",5853.53,"In-use","FFE-IT","MF-I Cereño"],
+  ["17-Q96","2023-09-07","Secure UPS 650VA",1969.70,"In-use","FFE-IT","Acctg - J. Alga"],
+  ["17-Q97","2023-09-07","Secure UPS 650VA",1969.69,"In-use","FFE-IT","Audit - L. Pizon"],
+  ["20-T51","2020-02-07","Toshiba External HD",4500,"In-use","FFE-IT","Ipil-J.Jaalain"],
+  ["20-T65","2022-09-27","120GB SSD Card",1515.15,"In-use","FFE-IT","Ipil-J.Jaalain"],
+  ["20-T97","2023-03-16","Kingston 32gb USB Flash Drive",303.03,"In-use","FFE-IT","Ipil-J.Jaalain"],
+  ["20-T101","2023-03-16","Seagate 2TB External HD",4646.47,"In-use","FFE-IT","Ipil-A.Rumandan"],
+  ["21-U4","2014-10-29","Qube Face ID Biometric",7990,"In-use","FFE-IT","Piñan"],
+  ["21-U5","2014-10-29","Qube Face ID Biometric",7990,"In-use","FFE-IT","HO"],
+  ["21-U13","2017-02-15","Qube Fingerprint Biometric",4999,"In-use","FFE-IT","Ipil"],
+  ["23-W1","2018-07-31","HP Laptop",16005.05,"Damaged","FFE-IT","HO MF"],
+  ["23-W2","2021-11-23","Lenovo Laptop Ideapad 3",20505.05,"In-use","FFE-IT","Audit-E. Bagaub"],
+  ["25-Y9","2024-04-11","Battery for Generator",7065.66,"In-use","FFE-Other","HO"],
+  ["25-Y10","2024-04-11","Battery for Generator",7065.65,"In-use","FFE-Other","HO"],
+  ["25-Y11","2024-09-12","Battery for Generator",6525.46,"In-use","FFE-Other","Piñan"],
+  ["26-Z1","2020-08-18","Sharp Adding Machine",5196.72,"In-use","FFE-IT","Acctg-R.Juarez"],
+  ["27-AA1","2017-07-24","Yamaha FZ 150",85000,"In-use","Transpo","HO-D.Montallana"],
+  ["27-AA2","2017-08-23","Honda XR 150",82760,"In-use","Transpo","HO-J.Quirante"],
+  ["27-AA4","2018-10-08","Honda XRM 125",69000,"In-use","Transpo","Buug-A.Cabusas"],
+  ["27-AA5","2012-07-03","Honda XRM 125",61200,"In-use","Transpo","Piñan"],
+  ["27-AA7","2022-11-08","Honda XRM 125 Mottard",78605,"In-use","Transpo","Piñan"],
+  ["27-AA10","2021-03-01","Yamaha XTZ 125 (White)",82800,"In-use","Transpo","Ipil-J.Delos Reyes"],
+  ["27-AA11","2021-03-24","Honda Click 125 (Blue)",76900,"In-use","Transpo","Ipil-C.Antone"],
+  ["27-AA12","2021-05-05","Suzuki Raider 150 (Blue)",85000,"In-use","Transpo","Ipil-N.Cadungog"],
+  ["27-AA13","2022-10-26","Honda XRM 125 Motard (Red)",78605,"In-use","Transpo","HO-N.Tejero"],
+  ["27-AA14","2022-10-26","Honda XRM 125 Motard (Red)",78605,"In-use","Transpo","HO-J.Galisa"],
+  ["27-AA15","2022-10-26","Honda XRM 125 Motard (Red)",78605,"In-use","Transpo","HO-F.Quirante"],
+  ["28-BB1","2018-01-31","Multicab",177440.01,"In-use","Transpo","Piñan"],
+  ["28-BB2","2018-03-16","Toyota Innova (Gray)",1358317.50,"In-use","Transpo","M.Brasileño"],
+  ["28-BB3","2021-01-12","Toyota Innova (Khaki)",476455.57,"In-use","Transpo","Corporate"],
+  ["1-A1","2001-10-16","Computer Table",2800,"In-use","FFE","Piñan-AS"],
+  ["1-A2","2001-10-16","Computer Table",2800,"In-use","FFE","Piñan-AS"],
+  ["1-A3","2001-10-16","Computer Table",2800,"In-use","FFE","Piñan-R Pa-a"],
+  ["1-A7","2000-05-23","Office Table",3025,"In-use","FFE","Piñan-D Ejara"],
+  ["1-A8","2000-05-23","Office Table",3025,"In-use","FFE","Piñan-Client"],
+  ["1-A11","2003-08-14","Office Table",2900,"In-use","FFE","Ipil-AS"],
+  ["1-A12","2003-08-14","Office Table",2900,"In-use","FFE","Ipil-AS"],
+  ["1-A13","2003-08-14","Office Table",2900,"In-use","FFE","Ipil-A Rumandan"],
+  ["1-A14","2003-08-14","Office Table",2900,"In-use","FFE","Ipil-Manager"],
+  ["1-A26","2005-11-17","Conference Table",21387.88,"In-use","FFE","HO-Board Room"],
+  ["1-A38","2007-11-29","Office Table",2950,"In-use","FFE","HO-L Pizon"],
+  ["1-A42","2008-01-22","Office Table",3000,"In-use","FFE","HO-Dining Area"],
+  ["1-A43","2008-05-13","Managers Table",5960.50,"In-use","FFE","HO-KM Pasoc"],
+  ["1-A44","2008-05-13","Conference Table",5960.50,"In-use","FFE","HO-Dining Area"],
+  ["1-A45","2008-10-17","Executive Table",6000,"In-use","FFE","HO-J Galisa"],
+  ["2-B23","2003-08-14","Swivel Chair",850,"In-use","FFE","HO-M Cardiño"],
+  ["2-B24","2003-08-14","Swivel Chair",850,"In-use","FFE","HO-RF Elba"],
+  ["2-B61","2004-02-24","Ruby Plastic Chair",235,"In-use","FFE","Piñan-Office"],
+  ["2-B105","2004-03-08","Ruby Plastic Chair",235,"In-use","FFE","HO"],
+  ["2-B125","2005-11-17","Waiting Chair",7062.63,"In-use","FFE","HO-Regular Dept"],
+  ["2-B128","2005-11-17","Junior Executive Chair",11343.94,"In-use","FFE","HO-Dining Area"],
+  ["2-B130","2005-11-17","Leather Executive Chair",6660.99,"In-use","FFE","HO-Board room"],
+  ["2-B145","2011-06-07","Executive Chair",5400,"In-use","FFE","HO-M Brasileño"],
+  ["2-B152","2013-07-09","Clerical Chair",845,"In-use","FFE","HO-Purok"],
+  ["2-B167","2016-05-31","Waiting Chair",4970.25,"In-use","FFE-Other","Ipil-Client"],
+  ["2-B173","2020-08-28","Chitose Chair (Orange)",1500,"In-use","FFE-Other","HO-Acctg Dept"],
+  ["2-B190","2022-11-04","Olympia Chair",1939.40,"In-use","FFE-Other","Ipil-D Baid"],
+  ["3-C2","2004-10-12","Steel Filing Cabinet (4 drawers)",8500,"In-use","FFE","Ipil-D Baid"],
+  ["3-C3","2005-02-08","Steel Filing Cabinet (4 drawers)",19000,"In-use","FFE","Piñan-R Pa-a"],
+  ["3-C4","2005-02-08","Wood Filing Cabinet",4275,"In-use","FFE","HO-Audit Dept"],
+  ["3-C5","2005-06-22","Steel Filing Cabinet w/ vault",9500,"In-use","FFE","Piñan-R Pa-a"],
+  ["3-C10","2008-07-07","Wood Filing Cabinet (4 drawers)",5800,"In-use","FFE","HO-Board Room"],
+  ["3-C14","2010-05-05","Wood Filing Cabinet (White)",6200,"In-use","FFE","HO-Board Room"],
+  ["3-C36","2007-09-10","Steel Filing Cabinet (4 drawers)",7998,"In-use","FFE-Other","HO-HR Dept"],
+  ["3-C47","2016-10-19","Zooey Plate Cabinet",2333.33,"In-use","FFE-Other","Piñan-A.Eguia"],
+  ["3-C50","2005-02-08","Steel Filing Cabinet (4 drawers)",0,"In-use","FFE-Other","Piñan-R Pa-a"]
+];
+
+// ── localStorage helpers ───────────────────────────────────────────────────
+function lsGet(k){try{const s=localStorage.getItem(k);return s?JSON.parse(s):null}catch(e){return null}}
+function lsSet(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+
+function loadAssets(){
+  const s=lsGet(LS_ASSETS);
+  if(s&&s.length>0) return s;
+  const fresh=SEED.map(r=>({code:r[0],date:r[1],desc:r[2],amount:r[3],status:r[4]||'In-use',account:r[5],dept:r[6],validated:false,validatedAt:null}));
+  lsSet(LS_ASSETS,fresh); return fresh;
+}
+function saveAssets(a){lsSet(LS_ASSETS,a)}
+function loadLog(){return lsGet(LS_LOG)||[]}
+function saveLog(l){lsSet(LS_LOG,l)}
+
+let assets=loadAssets(), scanLog=loadLog(), currentPage=1, selected=new Set();
+const PER=20;
+
+// ── HELPERS ────────────────────────────────────────────────────────────────
+function sbadge(s){const m={'in-use':'s-inuse','damaged':'s-damaged','unused':'s-unused'};return`<span class="sb ${m[(s||'').toLowerCase()]||'s-inuse'}">${s||'In-use'}</span>`}
+function fmt(n){return n?'₱'+Number(n).toLocaleString('en',{minimumFractionDigits:2}):'—'}
+function toast(msg,t='success'){const el=document.getElementById('toast');el.textContent=msg;el.className=`toast ${t} show`;setTimeout(()=>el.className='toast',2800)}
+function showTab(tab,btn){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+tab).classList.add('active');
+  if(btn)btn.classList.add('active');
+  assets=loadAssets(); scanLog=loadLog();
+  updateDashboard();
+  if(tab==='inventory')renderInventory();
+  if(tab==='validation')renderLog();
+}
+function updateDashboard(){
+  const tot=assets.length,inuse=assets.filter(a=>(a.status||'').toLowerCase().includes('use')).length,val=assets.filter(a=>a.validated).length;
+  ['kpi-total','h-total'].forEach(id=>document.getElementById(id).textContent=tot);
+  document.getElementById('kpi-inuse').textContent=inuse;
+  ['kpi-validated','h-validated'].forEach(id=>document.getElementById(id).textContent=val);
+  document.getElementById('kpi-pending').textContent=tot-val;
+  if(val>0)document.getElementById('sync-note').style.display='block';
+  renderRecentLog();
+}
+
+// ── INVENTORY ──────────────────────────────────────────────────────────────
+function getFiltered(){
+  const q=(document.getElementById('inv-search')?.value||'').toLowerCase();
+  const fs=(document.getElementById('f-status')?.value||'').toLowerCase();
+  const fa=document.getElementById('f-account')?.value||'';
+  return assets.filter(a=>{
+    const mq=!q||a.code.toLowerCase().includes(q)||a.desc.toLowerCase().includes(q)||(a.dept||'').toLowerCase().includes(q);
+    const ms=!fs||(a.status||'').toLowerCase().includes(fs);
+    const ma=!fa||a.account===fa;
+    return mq&&ms&&ma;
+  });
+}
+function renderInventory(){
+  assets=loadAssets();
+  const f=getFiltered(),tp=Math.max(1,Math.ceil(f.length/PER));
+  if(currentPage>tp)currentPage=1;
+  const page=f.slice((currentPage-1)*PER,currentPage*PER);
+  document.getElementById('row-count').textContent=`${f.length} of ${assets.length} assets`;
+  document.getElementById('inv-tbody').innerHTML=page.map(a=>`
+    <tr>
+      <td><input type="checkbox" ${selected.has(a.code)?'checked':''} onchange="toggleSelect('${a.code}',this)"></td>
+      <td class="code-cell">${a.code}</td><td>${a.desc}</td>
+      <td style="font-size:.8rem;color:var(--muted)">${a.date||'—'}</td>
+      <td style="font-family:'DM Mono',monospace;font-size:.8rem">${fmt(a.amount)}</td>
+      <td>${a.account}</td><td style="font-size:.82rem">${a.dept}</td>
+      <td>${sbadge(a.status)}</td>
+      <td>${a.validated?`<span class="sb s-val">✓ Validated<br><span style="font-size:.65rem;opacity:.7">${a.validatedAt||''}</span></span>`:'<span style="font-size:.75rem;color:var(--muted)">Pending</span>'}</td>
+      <td><button class="action-btn" onclick="quickGenQR('${a.code}')">QR Tag</button></td>
+    </tr>`).join('');
+  // pagination
+  document.getElementById('page-info').textContent=`Page ${currentPage} of ${tp}`;
+  let ph=`<button class="page-btn" onclick="goPage(${currentPage-1})">‹</button>`;
+  for(let i=Math.max(1,currentPage-2);i<=Math.min(tp,currentPage+2);i++)ph+=`<button class="page-btn${i===currentPage?' active':''}" onclick="goPage(${i})">${i}</button>`;
+  ph+=`<button class="page-btn" onclick="goPage(${currentPage+1})">›</button>`;
+  document.getElementById('page-btns').innerHTML=ph;
+  populateAccountFilter();
+}
+function populateAccountFilter(){
+  const sel=document.getElementById('f-account');
+  if(!sel||sel.dataset.loaded)return;
+  const acc=[...new Set(assets.map(a=>a.account))].sort();
+  sel.innerHTML='<option value="">All Accounts</option>'+acc.map(a=>`<option>${a}</option>`).join('');
+  sel.dataset.loaded=1;
+}
+function goPage(p){const m=Math.max(1,Math.ceil(getFiltered().length/PER));currentPage=Math.max(1,Math.min(p,m));renderInventory()}
+function toggleAll(el){assets.forEach(a=>el.checked?selected.add(a.code):selected.delete(a.code));renderInventory()}
+function toggleSelect(c,el){el.checked?selected.add(c):selected.delete(c)}
+function quickGenQR(code){
+  const a=assets.find(x=>x.code===code);if(!a)return;
+  document.getElementById('gen-code').value=a.code;
+  document.getElementById('gen-desc').value=a.desc;
+  document.getElementById('gen-dept').value=a.dept;
+  document.getElementById('gen-account').value=a.account;
+  document.getElementById('gen-status').value=a.status||'In-use';
+  document.getElementById('gen-suggestions').innerHTML='';
+  showTab('generator',document.querySelectorAll('nav button')[2]);generateQR();
+}
+function openAddModal(){document.getElementById('add-modal').classList.add('open')}
+function closeAddModal(){document.getElementById('add-modal').classList.remove('open')}
+function addAsset(){
+  const code=document.getElementById('new-code').value.trim();
+  if(!code){toast('Property code required','error');return}
+  if(assets.find(a=>a.code===code)){toast('Code already exists','error');return}
+  assets.push({code,date:document.getElementById('new-date').value,desc:document.getElementById('new-desc').value,amount:parseFloat(document.getElementById('new-amount').value)||0,status:document.getElementById('new-status').value,account:document.getElementById('new-account').value,dept:document.getElementById('new-dept').value,validated:false,validatedAt:null});
+  saveAssets(assets);closeAddModal();renderInventory();updateDashboard();toast(`Asset ${code} added`);
+}
+function exportCSV(){
+  const h='Property Code,Description,Date,Amount,Status,Account,Dept,Validated,Validated At';
+  const r=assets.map(a=>`"${a.code}","${a.desc}","${a.date||''}",${a.amount},"${a.status}","${a.account}","${a.dept}",${a.validated},"${a.validatedAt||''}"`);
+  const b=new Blob([h+'\n'+r.join('\n')],{type:'text/csv'});
+  const l=document.createElement('a');l.href=URL.createObjectURL(b);l.download='inventory_export.csv';l.click();
+}
+
+// ── QR GENERATOR ──────────────────────────────────────────────────────────
+function autoFillGen(v){
+  const m=assets.filter(a=>a.code.toLowerCase().startsWith(v.toLowerCase())).slice(0,6);
+  document.getElementById('gen-suggestions').innerHTML=m.map(a=>`<button class="action-btn" onclick="fillGen('${a.code}')">${a.code}</button>`).join('');
+}
+function fillGen(code){
+  const a=assets.find(x=>x.code===code);if(!a)return;
+  document.getElementById('gen-code').value=a.code;
+  document.getElementById('gen-desc').value=a.desc;
+  document.getElementById('gen-dept').value=a.dept;
+  document.getElementById('gen-account').value=a.account;
+  document.getElementById('gen-status').value=a.status||'In-use';
+  document.getElementById('gen-suggestions').innerHTML='';
+  generateQR();
+}
+function generateQR(){
+  const code=document.getElementById('gen-code').value.trim();
+  const desc=document.getElementById('gen-desc').value.trim();
+  const dept=document.getElementById('gen-dept').value.trim();
+  if(!code){toast('Enter a property code first','error');return}
+  // Simple pipe-delimited QR data — readable by any QR scanner
+  const qrData=`${code}|${desc}|${dept}`;
+  document.getElementById('tag-org').textContent=document.getElementById('gen-org').value||'PROPERTY OF';
+  document.getElementById('tag-sublabel').textContent=document.getElementById('gen-sublabel').value;
+  document.getElementById('tag-code').textContent=code;
+  document.getElementById('tag-desc').textContent=desc||'—';
+  document.getElementById('tag-dept-footer').textContent=dept||'—';
+  const out=document.getElementById('qr-output');
+  out.innerHTML='';
+  new QRCode(out,{text:qrData,width:180,height:180,colorDark:'#1a1a2e',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.H});
+}
+function printTag(){
+  const tag=document.getElementById('qr-tag-element').outerHTML;
+  const w=window.open('','_blank');
+  w.document.write(`<!DOCTYPE html><html><head><style>
+    @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Mono:wght@500&display=swap');
+    body{margin:0;display:flex;align-items:center;justify-content:center;min-height:100vh;background:#f3f4f6}
+    .qr-tag-wrap{background:white;border-radius:12px;padding:24px 20px 16px;width:260px;box-shadow:0 4px 12px rgba(0,0,0,.15);display:flex;flex-direction:column;align-items:center}
+    .qr-tag-header{font-family:'Syne',sans-serif;font-weight:800;font-size:.85rem;color:#1a1a2e;text-align:center;margin-bottom:8px}
+    .qr-tag-sub{font-size:.68rem;color:#6b7280;text-align:center;margin-bottom:14px}
+    .qr-divider{width:100%;height:1px;background:#e5e7eb;margin-bottom:14px}
+    .qr-code-text{font-family:'DM Mono',monospace;font-size:.8rem;color:#374151;margin-top:10px;font-weight:600;letter-spacing:.08em;text-align:center}
+    .qr-desc-text{font-size:.7rem;color:#6b7280;margin-top:4px;text-align:center}
+    .qr-footer{margin-top:12px;padding-top:10px;border-top:1px dashed #e5e7eb;width:100%;font-size:.62rem;color:#9ca3af;text-align:center}
+    .qr-footer-brand{font-weight:700;color:#374151}
+    @media print{body{background:white}}
+  </style></head><body>${tag}</body></html>`);
+  w.document.close();setTimeout(()=>w.print(),800);
+}
+
+// ── VALIDATION ────────────────────────────────────────────────────────────
+function parseCode(raw){
+  // Handles: plain code, pipe format "CODE|desc|dept", or JSON {code:...}
+  if(!raw) return '';
+  if(raw.includes('|')) return raw.split('|')[0].trim();
+  try{const p=JSON.parse(raw);if(p.code)return p.code;}catch(e){}
+  return raw.trim();
+}
+function manualScan(){
+  const raw=document.getElementById('manual-code').value.trim();
+  if(!raw)return;
+  const code=parseCode(raw).toUpperCase();
+  const asset=assets.find(a=>a.code.toUpperCase()===code);
+  const box=document.getElementById('scan-result-box');
+  const ts=new Date().toLocaleString('en-PH',{hour12:true});
+  if(asset){
+    asset.validated=true;asset.validatedAt=ts;
+    saveAssets(assets);
+    box.className='scan-result found';box.style.display='block';
+    box.innerHTML=`<div class="scan-result-title">✓ Asset Found & Validated</div>
+      <div class="scan-detail">Code: <span>${asset.code}</span></div>
+      <div class="scan-detail">Description: <span>${asset.desc}</span></div>
+      <div class="scan-detail">In-Charge: <span>${asset.dept}</span></div>
+      <div class="scan-detail">Account: <span>${asset.account}</span></div>
+      <div class="scan-detail">Validated at: <span>${ts}</span></div>`;
+    addLog(asset.code,asset.desc,'Admin Manual',true);
+    toast(`✓ ${asset.code} validated`);
+  } else {
+    box.className='scan-result notfound';box.style.display='block';
+    box.innerHTML=`<div class="scan-result-title">✗ Not Found in Database</div>
+      <div class="scan-detail">Code "<span>${code}</span>" is not registered.</div>`;
+    addLog(code,'—','Admin Manual',false);
+    toast(`✗ Not found: ${code}`,'error');
+  }
+  updateDashboard();renderInventory();
+}
+function addLog(code,desc,by,ok){
+  scanLog.unshift({ts:new Date().toLocaleString('en-PH',{hour12:true}),code,desc,by,ok});
+  if(scanLog.length>500)scanLog=scanLog.slice(0,500);
+  saveLog(scanLog);renderLog();
+}
+function renderLog(){
+  const tb=document.getElementById('log-tbody');
+  document.getElementById('log-count').textContent=scanLog.length;
+  if(!scanLog.length){tb.innerHTML='<tr><td colspan="6" class="empty-state">No scan events yet.</td></tr>';return}
+  tb.innerHTML=scanLog.map((l,i)=>`
+    <tr>
+      <td style="font-family:'DM Mono',monospace;font-size:.78rem;color:var(--muted)">${i+1}</td>
+      <td style="font-size:.78rem;color:var(--muted)">${l.ts}</td>
+      <td class="code-cell">${l.code}</td>
+      <td style="font-size:.82rem">${l.desc}</td>
+      <td style="font-size:.82rem">${l.by}</td>
+      <td>${l.ok?'<span class="sb s-inuse">✓ Valid</span>':'<span class="sb s-damaged">✗ Not Found</span>'}</td>
+    </tr>`).join('');
+}
+function renderRecentLog(){
+  const el=document.getElementById('recent-log');
+  if(!scanLog.length){el.innerHTML='<div class="empty-state">No scans yet. Use the QR Scanner app to validate assets.</div>';return}
+  el.innerHTML=`<table><thead><tr><th>Time</th><th>Code</th><th>Description</th><th>Scanned By</th><th>Result</th></tr></thead><tbody>
+    ${scanLog.slice(0,10).map(l=>`<tr><td style="font-size:.78rem;color:var(--muted)">${l.ts}</td><td class="code-cell">${l.code}</td><td style="font-size:.82rem">${l.desc}</td><td style="font-size:.82rem">${l.by}</td><td>${l.ok?'<span class="sb s-inuse">✓ Valid</span>':'<span class="sb s-damaged">✗ Not Found</span>'}</td></tr>`).join('')}
+  </tbody></table>`;
+}
+function clearLog(){
+  if(!confirm('Clear all scan logs and reset validation status?'))return;
+  scanLog=[];saveLog(scanLog);
+  assets.forEach(a=>{a.validated=false;a.validatedAt=null;});saveAssets(assets);
+  renderLog();updateDashboard();renderInventory();toast('Log cleared and validation status reset');
+}
+
+// ── INIT + LIVE SYNC ──────────────────────────────────────────────────────
+renderInventory();updateDashboard();renderLog();
+
+// Poll localStorage every 2s to pick up scanner app changes
+let _lastLogLen=scanLog.length, _lastValCount=assets.filter(a=>a.validated).length;
+setInterval(()=>{
+  const fa=loadAssets(), fl=loadLog();
+  const vc=fa.filter(a=>a.validated).length;
+  if(fl.length!==_lastLogLen || vc!==_lastValCount){
+    assets=fa; scanLog=fl;
+    _lastLogLen=fl.length; _lastValCount=vc;
+    updateDashboard(); renderLog();
+    if(document.getElementById('tab-inventory').classList.contains('active')) renderInventory();
+  }
+},2000);
+
+// Listen for storage events from other tabs on same domain
+window.addEventListener('storage',e=>{
+  if(e.key===LS_ASSETS||e.key===LS_LOG){
+    assets=loadAssets(); scanLog=loadLog();
+    updateDashboard(); renderLog();
+    if(document.getElementById('tab-inventory').classList.contains('active')) renderInventory();
+  }
+});
+</script>
+</body>
+</html>
